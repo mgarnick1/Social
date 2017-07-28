@@ -10,6 +10,8 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
+import SwiftKeychainWrapper
+
 
 
 
@@ -21,13 +23,17 @@ class SignInVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let _ = KeychainWrapper.stringForKey(KEY_UID) {
+            performSegue(withIdentifier: "goToFeed", sender: nil)
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     @IBAction func facebookBtnTapped(_ sender: Any) {
         
@@ -42,6 +48,7 @@ class SignInVC: UIViewController {
                 print("Jess: Successfully authenticated with Facebook")
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
                 self.firebaseAuth(credential)
+                
             }
         
         }
@@ -53,6 +60,11 @@ class SignInVC: UIViewController {
                 print("Jess: unable to authenticate with Firebase \(error)")
             } else {
                 print("Jess: successfully authenticated with Firebase")
+                if let user = user {
+                    let userData = ["provider"!, credential.provider]
+                    self.completeSignIn(id: user.uid, userData: userData)
+                }
+                
             }
             
         })
@@ -62,12 +74,21 @@ class SignInVC: UIViewController {
             firebaseAuth.signIn(withEmail: email, password: pwd, completeion: {(user, error) in
                 if error == nil {
                     print("Jess: Email user authenticated with Firebase")
+                    if let user = user {
+                        let userData = ["provider"!, user.providerID]
+                        self.completeSignIn(id: user.uid, userData: userData)
+                    }
                 } else {
                     firebaseAuth()?.createUser(withEmail: email, password: pwd, completeion: {(user, error) in
                         if error != nil {
                             print("Jess: Unable to authenticate with Firebase using email")
                         } else {
                             print("Jess: Successfully authenticated with Firebase")
+                            if let user = user {
+                                let userData = ["provider"!, user.providerID]
+                                self.completeSignIn(id: user.uid, userData: userData)
+                            }
+                            
                         }
                         
                     })
@@ -77,5 +98,14 @@ class SignInVC: UIViewController {
         )}
 
     }
+    
+    func completeSignIn(id: String, userData: Dictionary<String, String>) {
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
+        let keychainResult = KeychainWrapper.standard.setString(id, forKey: KEY_UID)
+        print("Jess: Data saved to keychain \(keychainResult)")
+        performSegue(withIdentifier: "goToFeed", sender: nil)
+    }
+    
+    
 }
 
