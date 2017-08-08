@@ -20,6 +20,7 @@
 		D85ECD3E1F228F5700C2B13F /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85ECD3D1F228F5700C2B13F /* FeedVC.swift */; };
 		D88A4F681F297B8B00D6D6B9 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A4F671F297B8A00D6D6B9 /* PostCell.swift */; };
 		D890AE631F26DB870074F3EE /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D890AE621F26DB870074F3EE /* CircleView.swift */; };
+		D89FD31A1F3A4C88008D98FF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89FD3191F3A4C88008D98FF /* Post.swift */; };
 		D8A5444B1F2BC47F00F3D5C2 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A5444A1F2BC47F00F3D5C2 /* DataService.swift */; };
 		D8D30DD61F1E9D7400D65107 /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D30DD51F1E9D7400D65107 /* FancyField.swift */; };
 		D8D30DD81F1E9FAB00D65107 /* FancyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D30DD71F1E9FAA00D65107 /* FancyBtn.swift */; };
@@ -46,6 +47,7 @@
 		D886A3061F203AAF00A23139 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "Pods/../build/Debug-iphoneos/FBSDKShareKit/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		D88A4F671F297B8A00D6D6B9 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		D890AE621F26DB870074F3EE /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		D89FD3191F3A4C88008D98FF /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		D8A5444A1F2BC47F00F3D5C2 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		D8D30DD51F1E9D7400D65107 /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
 		D8D30DD71F1E9FAA00D65107 /* FancyBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyBtn.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		D858EFF71F194F6000D70451 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D89FD3191F3A4C88008D98FF /* Post.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				D890AE631F26DB870074F3EE /* CircleView.swift in Sources */,
 				D8D30DD61F1E9D7400D65107 /* FancyField.swift in Sources */,
 				D82F04751F1949190065341B /* SignInVC.swift in Sources */,
+				D89FD31A1F3A4C88008D98FF /* Post.swift in Sources */,
 				D8241B1D1F1E98AD002BE329 /* RoundBtn.swift in Sources */,
 				D82F04731F1949190065341B /* AppDelegate.swift in Sources */,
 				D8A5444B1F2BC47F00F3D5C2 /* DataService.swift in Sources */,
